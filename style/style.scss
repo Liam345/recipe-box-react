@@ -1,0 +1,49 @@
+
+.recipeHeading{
+    background-color:green;
+    color:white; 
+    font-size:50px;
+    font-weight:200;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+footer{
+    background-color:green;
+    color:white; 
+    font-size:30px;
+}
+
+.recipe-picture{
+    width:400px;
+    height:400px;
+}
+.recipes-container{
+    border:2px blue solid;
+     display:flex;
+     flex-wrap:wrap;
+     
+    
+}
+
+.recipe-item-container{
+    
+    border:2px red solid;
+    width:400px;
+    height:500px;
+    margin-right:20px;
+   margin-bottom:20px;
+    
+}
+.recipe-title{
+    font-size:20px;
+    color:white;
+    background-color:green;
+}
+
+.addButton{
+    font-size:30px;
+    background-color:lightslategray;
+    display:inline;
+}
+
