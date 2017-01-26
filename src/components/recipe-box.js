@@ -1,68 +1,52 @@
 import React from 'react';
-import RecipeAbout from './recipe-about';
+
+import Ingredient from './recipe-ingredients';
 import ReactModal from 'react-modal';
 
 class RecipeBox extends React.Component{
     constructor(props){
         super(props);
-       // this.onRecipeClicked = this.onRecipeClicked.bind(this);   (Why do I not need to add bind to OnRecipeClicked)
         this.handleCloseModal = this.handleCloseModal.bind(this);
-       this.state={
+        this.deleteRecipe = this.deleteRecipe.bind(this);
+        this.state={
            showModal:false
         };
     }
 
     onRecipeClicked(term){
             console.log(this.props.recipe);
-            this.props.onRecipeSelect(this.props.recipe);
-            this.props.onRecipeSelect(this.props.recipe);
-             this.setState({showModal:true});
+            this.setState({showModal:true});
         }
-        handleCloseModal(){
-       this.setState({showModal:false}); 
+    handleCloseModal(){
+            this.setState({showModal:false}); 
+    }
+
+    deleteRecipe(){
+        this.props.onRecipeDelete(this.props.recipe); //sends recipe to index.js as selected recipe. Delete it in index.js on state change
+        this.setState({showModal:false}); 
     }
 
     render(){
         const imgsrc = this.props.recipe.image;
-        
+        const ingredients = this.props.recipe.ingredients;
+        const recipeIngredients = ingredients.map((ingredient,index)=>
+            <Ingredient key={index} ing={ingredient}/>)
         return (
             <div className="recipe-item-container" onClick={(event)=>this.onRecipeClicked(event)}>
-            <img src={imgsrc} className="recipe-picture" /> 
-            <div className="recipe-title">{this.props.recipe.name}</div>
-            <ReactModal
-            isOpen={this.state.showModal}
-            contentLabel ="Model Example"
-            >
-            <p>Modal Text!</p>
-            <p>{this.props.recipe.name}</p>  
-            <button onClick={this.handleCloseModal}>Close Modal</button>
-            </ReactModal>
+                <img src={imgsrc} className="recipe-picture" /> 
+                <div className="recipe-title">{this.props.recipe.name}</div>
+                <ReactModal
+                isOpen={this.state.showModal}
+                contentLabel ="Model Example"
+                >
+                    <h1 className="recipeHeading">{this.props.recipe.name}</h1>  
+                    {recipeIngredients}
+                    <button className="btn" onClick={this.handleCloseModal}>Close</button>
+                    <button className="btn" onClick={this.deleteRecipe}>Delete Recipe</button>
+                </ReactModal>
             </div>
         );
     }
 }
-
-// const RecipeBox =(props)=>{
-
-// const imgsrc = props.recipe.image;
-
-// function onRecipeClicked(term){
-//     console.log(props.recipe);
-//     props.onRecipeSelect(props.recipe);
-//     <RecipeAbout />;
-   
-
-// }
-
-// return(
-// <div className="recipe-item-container" onClick={(event)=>onRecipeClicked(event)}>
-// <img src={imgsrc} className="recipe-picture" /> 
-// <div className="recipe-title">{props.recipe.name}</div>
-// <RecipeAbout />
-
-// </div>
-// );
-
-// } 
 
 export default RecipeBox;

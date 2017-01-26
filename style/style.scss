@@ -19,7 +19,9 @@ footer{
     height:400px;
 }
 .recipes-container{
-    border:2px blue solid;
+   
+
+
      display:flex;
      flex-wrap:wrap;
      
@@ -28,7 +30,8 @@ footer{
 
 .recipe-item-container{
     
-    border:2px red solid;
+    
+    
     width:400px;
     height:500px;
     margin-right:20px;
@@ -47,3 +50,40 @@ footer{
     display:inline;
 }
 
+.recipe-ing{
+    background-color:deepskyblue;
+    border: 2px blue solid;
+    border-radius:5px;
+    width:75%;
+    font-size:30px;
+    font:helvetica, sans-serif;
+    margin-bottom:10px;
+
+}
+
+.btn{
+    font-size:30px;
+    background-color:green;
+    width:200px;
+}
+
+.formLabel{
+    font:helvetica,sans-serif;
+    font-size:20px;
+    background-color:grey;
+    border:1px solid darkgray;
+
+}
+
+.formInput{
+    font-size:20px;
+    border:1px solid black;
+    width:300px;
+}
+
+.textArea{
+    width:300px;
+    height:400px;
+    font-size:20px;
+    border:1px solid black
+}
