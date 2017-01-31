@@ -8,6 +8,7 @@ class RecipeBox extends React.Component{
         super(props);
         this.handleCloseModal = this.handleCloseModal.bind(this);
         this.deleteRecipe = this.deleteRecipe.bind(this);
+        this.editRecipe = this.editRecipe.bind(this);
         this.state={
            showModal:false
         };
@@ -24,6 +25,10 @@ class RecipeBox extends React.Component{
     deleteRecipe(){
         this.props.onRecipeDelete(this.props.recipe); //sends recipe to index.js as selected recipe. Delete it in index.js on state change
         this.setState({showModal:false}); 
+    }
+    
+    editRecipe(){
+        this.props.onRecipeEdit(this.props.recipe);
     }
 
     render(){
@@ -43,6 +48,7 @@ class RecipeBox extends React.Component{
                     {recipeIngredients}
                     <button className="btn" onClick={this.handleCloseModal}>Close</button>
                     <button className="btn" onClick={this.deleteRecipe}>Delete Recipe</button>
+                    <button className="btn" onClick={this.editRecipe}>Edit Recipe</button>
                 </ReactModal>
             </div>
         );
